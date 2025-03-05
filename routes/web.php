@@ -8,8 +8,12 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
+    // this is eager loading the employer to reduce the number of queries
+    // to avoid the N+1 problem
+    $jobs = Job::with('employer')->get();
+
     return view('jobs', [
-        'jobs' => Job::all(),
+        'jobs' => $jobs,
     ]);
 });
 
