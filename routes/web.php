@@ -10,7 +10,9 @@ Route::get('/', function () {
 Route::get('/jobs', function () {
     // this is eager loading the employer to reduce the number of queries
     // to avoid the N+1 problem
-    $jobs = Job::with('employer')->get();
+    // from least to most performance:
+    // paginate -> simplePaginate(just previous next button) -> cursorPaginate(does not let you use urls like ?page=2)
+    $jobs = Job::with('employer')->paginate(3);
 
     return view('jobs', [
         'jobs' => $jobs,
