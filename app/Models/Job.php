@@ -13,7 +13,8 @@ class Job extends Model
 
     protected $table = 'job_listings';
 
-    protected $fillable = ['title', 'salary'];
+    //    protected $fillable = ['employer_id', 'title', 'salary'];
+    protected $guarded = ['id'];
 
     /**
      * Get the employer that owns the job.
