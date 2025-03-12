@@ -37,6 +37,7 @@
                     <p class="text-xs text-red-600 font-semibold my-3">{{ $message }}</p>
                     @enderror
                 </div>
+                {{--                this is another way of doing it--}}
                 {{--                <div class="mt-10">--}}
                 {{--                    @if($errors->any())--}}
                 {{--                        <div class="mt-4">--}}
