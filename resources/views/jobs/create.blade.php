@@ -1,11 +1,11 @@
 <x-layout>
-    <x-slot:heading>Create new job listing</x-slot:heading>
+    <x-slot:heading>Create job</x-slot:heading>
 
     <form method="POST" action="/jobs">
         @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base/7 font-semibold text-gray-900">Profile</h2>
+                <h2 class="text-base/7 font-semibold text-gray-900">Create a New job listing</h2>
                 <p class="mt-1 text-sm/6 text-gray-600">We just need a few details from you.</p>
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -16,8 +16,11 @@
                             </div>
                             <input type="text" name="title" id="title"
                                    class="block min-w-0 grow py-1.5 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                                   placeholder="Shift Leader">
+                                   placeholder="Shift Leader" required>
                         </div>
+                        @error('title')
+                        <p class="text-xs text-red-600 font-semibold my-3">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -28,9 +31,25 @@
                         </div>
                         <input type="text" name="salary" id="salary"
                                class="block min-w-0 grow py-1.5 pr-3 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                               placeholder="$50,000 per year">
+                               placeholder="$50,000 per year" required>
                     </div>
+                    @error('salary')
+                    <p class="text-xs text-red-600 font-semibold my-3">{{ $message }}</p>
+                    @enderror
                 </div>
+                {{--                <div class="mt-10">--}}
+                {{--                    @if($errors->any())--}}
+                {{--                        <div class="mt-4">--}}
+                {{--                            <div class="text-sm text-red-600 italic">--}}
+                {{--                                <ul>--}}
+                {{--                                    @foreach ($errors->all() as $error)--}}
+                {{--                                        <li>{{ $error }}</li>--}}
+                {{--                                    @endforeach--}}
+                {{--                                </ul>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    @endif--}}
+                {{--                </div>--}}
             </div>
         </div>
 
