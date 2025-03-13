@@ -8,12 +8,14 @@ Route::view('/', 'index');
 Route::view('/contact', 'contact');
 
 // if you want to see the routes cmd:php artisan route:list --except-vendor
-Route::controller(JobController::class)->group(function () {
-    Route::get('/jobs', 'index');
-    Route::get('/jobs/create', 'create');
-    Route::get('/jobs/{job}', 'show');
-    Route::post('/jobs', 'store');
-    Route::get('/jobs/{job}/edit', 'edit');
-    Route::patch('/jobs/{job}', 'update');
-    Route::delete('/jobs/{job}', 'destroy');
-});
+// Route::controller(JobController::class)->group(function () {
+//    Route::get('/jobs', 'index');
+//    Route::get('/jobs/create', 'create');
+//    Route::get('/jobs/{job}', 'show');
+//    Route::post('/jobs', 'store');
+//    Route::get('/jobs/{job}/edit', 'edit');
+//    Route::patch('/jobs/{job}', 'update');
+//    Route::delete('/jobs/{job}', 'destroy');
+// });
+// super shorthand for the above but requires correct naming convention
+Route::resource('jobs', JobController::class);
