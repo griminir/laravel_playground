@@ -3,17 +3,17 @@
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/contact', function () {
-    return view('contact');
-});
+// shorthand for serving static pages
+Route::view('/', 'index');
+Route::view('/contact', 'contact');
 
-Route::get('/jobs', [jobController::class, 'index']);
-Route::get('/jobs/create', [JobController::class, 'create']);
-Route::get('/jobs/{job}', [jobController::class, 'show']);
-Route::post('/jobs', [jobController::class, 'store']);
-Route::get('/jobs/{job}/edit', [jobController::class, 'edit']);
-Route::patch('/jobs/{job}', [jobController::class, 'update']);
-Route::delete('/jobs/{job}', [jobController::class, 'destroy']);
+// if you want to see the routes cmd:php artisan route:list --except-vendor
+Route::controller(JobController::class)->group(function () {
+    Route::get('/jobs', 'index');
+    Route::get('/jobs/create', 'create');
+    Route::get('/jobs/{job}', 'show');
+    Route::post('/jobs', 'store');
+    Route::get('/jobs/{job}/edit', 'edit');
+    Route::patch('/jobs/{job}', 'update');
+    Route::delete('/jobs/{job}', 'destroy');
+});
