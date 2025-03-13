@@ -17,5 +17,7 @@ Route::view('/contact', 'contact');
 //    Route::patch('/jobs/{job}', 'update');
 //    Route::delete('/jobs/{job}', 'destroy');
 // });
+
 // super shorthand for the above but requires correct naming convention
+// can use except() to exclude routes or only() to include specific routes
 Route::resource('jobs', JobController::class);
