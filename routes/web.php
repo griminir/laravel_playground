@@ -26,8 +26,8 @@ Route::get('/jobs/create', function () {
 });
 
 // show
-Route::get('/jobs/{id}', function ($id) {
-    return view('jobs.show', ['job' => Job::find($id)]);
+Route::get('/jobs/{job}', function (Job $job) {
+    return view('jobs.show', ['job' => $job]);
 });
 
 // store
@@ -48,20 +48,20 @@ Route::post('/jobs', function () {
 });
 
 // edit
-Route::get('/jobs/{id}/edit', function ($id) {
-    return view('jobs.edit', ['job' => Job::find($id)]);
+Route::get('/jobs/{job}/edit', function (Job $job) {
+    return view('jobs.edit', ['job' => $job]);
 });
 
 // update
-Route::patch('/jobs/{id}', function ($id) {
+Route::patch('/jobs/{job}', function (Job $job) {
+    // authorize
+
     request()->validate([
         'title' => ['required', 'min:3', 'max:255'],
         'salary' => ['required'],
     ]);
-    // authorize
 
     // update
-    $job = Job::findOrFail($id);
     $job->update([
         'title' => request('title'),
         'salary' => request('salary'),
@@ -72,11 +72,11 @@ Route::patch('/jobs/{id}', function ($id) {
 });
 
 // destroy
-Route::delete('/jobs/{id}', function ($id) {
+Route::delete('/jobs/{job}', function (Job $job) {
     // authorize
 
     // delete
-    Job::findOrFail($id)->delete();
+    $job->delete();
 
     // redirect to jobs page
     return redirect('/jobs');
