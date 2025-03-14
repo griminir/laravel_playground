@@ -9,7 +9,7 @@
                 <p class="mt-1 text-sm/6 text-gray-600">We just need a few details from you.</p>
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <div class="sm:col-span-4">
+                    <x-form-field>
                         <x-form-label for="title">
                             Title
                         </x-form-label>
@@ -17,26 +17,27 @@
                             <x-form-input type="text"
                                           name="title"
                                           id="title"
-                                          placeholder="Title"
+                                          placeholder="CTO"
                                           required
                             />
                         </div>
                         <x-form-error name="title"/>
-                    </div>
+                    </x-form-field>
+
+                    <x-form-field>
+                        <x-form-label for="salary">Salary</x-form-label>
+                        <div class="mt-2">
+                            <x-form-input type="number"
+                                          name="salary"
+                                          id="salary"
+                                          placeholder="Salary"
+                                          required
+                            />
+                        </div>
+                        <x-form-error name="salary"/>
+                    </x-form-field>
                 </div>
 
-                <div class="sm:col-span-4">
-                    <x-form-label for="salary">Salary</x-form-label>
-                    <div class="mt-2">
-                        <x-form-input type="number"
-                                      name="salary"
-                                      id="salary"
-                                      placeholder="Salary"
-                                      required
-                        />
-                    </div>
-                    <x-form-error name="salary"/>
-                </div>
                 {{--                this is another way of doing it--}}
                 {{--                <div class="mt-10">--}}
                 {{--                    @if($errors->any())--}}
@@ -55,12 +56,8 @@
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" class="text-sm/6 font-semibold text-gray-900">Cancel</button>
-            <button type="submit"
-                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                Save
-            </button>
+            <a href="/" type="button" class="text-sm/6 font-semibold text-gray-900">Cancel</a>
+            <x-form-button>save</x-form-button>
         </div>
     </form>
-
 </x-layout>

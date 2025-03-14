@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 // shorthand for serving static pages
@@ -21,3 +22,6 @@ Route::view('/contact', 'contact');
 // super shorthand for the above but requires correct naming convention
 // can use except() to exclude routes or only() to include specific routes
 Route::resource('jobs', JobController::class);
+
+// auth
+Route::get('/register', [RegisteredUserController::class, 'create']);
