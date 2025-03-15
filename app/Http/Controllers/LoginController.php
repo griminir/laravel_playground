@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-class RegisteredUserController extends Controller
+class LoginController extends Controller
 {
     public function create()
     {
-        return view('auth.register');
+        return view('auth.login');
     }
 
     public function store()
     {
-        // validate the request
         dd(request()->all());
-        // create the user
+        // validate the request
         // log the user in
         // redirect to the home page
     }
