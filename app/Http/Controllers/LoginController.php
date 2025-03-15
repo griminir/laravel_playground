@@ -39,7 +39,8 @@ class LoginController extends Controller
 
         RateLimiter::clear('login:'.request()->input('email'));
 
-        redirect('/jobs')->with('success', 'You have been logged in.');
+        return redirect('/jobs')->with('success',
+            'You have been logged in.');
     }
 
     public function destroy()
