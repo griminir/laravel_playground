@@ -12,6 +12,7 @@
                             <x-form-input type="email"
                                           name="email"
                                           id="email"
+                                          :value="old('email')"
                                           required
                             />
                         </div>
