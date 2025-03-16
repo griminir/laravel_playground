@@ -23,15 +23,15 @@ Route::controller(JobController::class)->group(function () {
 
     Route::get('/jobs/{job}/edit', 'edit')
         ->middleware('auth')
-        ->can('job-owner', 'job');
+        ->can('owner', 'job');
 
     Route::patch('/jobs/{job}', 'update')
         ->middleware('auth')
-        ->can('job-owner', 'job');
+        ->can('owner', 'job');
 
     Route::delete('/jobs/{job}', 'destroy')
         ->middleware('auth')
-        ->can('job-owner', 'job');
+        ->can('owner', 'job');
 });
 
 // super shorthand for the above but requires correct naming convention
