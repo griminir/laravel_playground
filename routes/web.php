@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('test', function () {});
+
 // shorthand for serving static pages
 Route::view('/', 'index');
 Route::view('/contact', 'contact');
