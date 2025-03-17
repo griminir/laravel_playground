@@ -40,7 +40,8 @@ class JobController extends Controller
         ]);
 
         // could give them the email address but Laravel will automatically grab it off the user model
-        Mail::to($job->employer->user)->send(new JobPosted($job));
+        Mail::to($job->employer->user)->queue(new JobPosted($job));
+        // since this is now queued it will be sent in the background, but we need to run: php artisan queue:work
 
         return redirect('/jobs')
             ->with('success', 'Job created successfully');

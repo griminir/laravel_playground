@@ -3,9 +3,16 @@
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Jobs\TranslateJob;
+use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
-Route::get('test', function () {});
+Route::get('test', function () {
+    $job = Job::first();
+    TranslateJob::dispatch($job);
+
+    return 'job done';
+});
 
 // shorthand for serving static pages
 Route::view('/', 'index');
